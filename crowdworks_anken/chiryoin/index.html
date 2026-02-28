@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>治療院専門MEO集客サービス｜新規患者を自動で増やす仕組み</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#007BFF;--green:#28A745;--dark:#1a1a2e;--text:#333;--sub:#666;--bg:#f8f9fa;--border:#e0e0e0}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);line-height:1.8;font-size:15px}
+a{color:var(--blue);text-decoration:none}
+img{max-width:100%}
+
+/* ヘッダー */
+header{background:#fff;border-bottom:3px solid var(--blue);padding:14px 20px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo{font-size:17px;font-weight:700;color:var(--blue);letter-spacing:.04em}
+.logo span{color:var(--green)}
+.header-tel{font-size:13px;color:var(--sub);text-align:right;line-height:1.4}
+.header-tel strong{font-size:18px;color:var(--dark);display:block}
+
+/* 共通 */
+.section{padding:60px 20px} 
+.section-inner{max-width:860px;margin:0 auto}
+.section-title{font-size:clamp(20px,4vw,28px);font-weight:900;color:var(--dark);border-left:5px solid var(--blue);padding-left:14px;margin-bottom:28px;line-height:1.5}
+.section-title.center{border-left:none;text-align:center;padding-left:0}
+.section-title.center::after{content:'';display:block;width:50px;height:4px;background:var(--blue);margin:10px auto 0}
+.lead{font-size:16px;color:var(--sub);margin-bottom:24px}
+
+/* CTAボタン */
+.btn{display:inline-block;background:var(--green);color:#fff;font-size:17px;font-weight:700;padding:16px 36px;border-radius:50px;text-align:center;box-shadow:0 4px 14px rgba(40,167,69,.35);transition:transform .2s,box-shadow .2s;letter-spacing:.06em}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(40,167,69,.45);color:#fff}
+.btn-wrap{text-align:center;margin-top:32px}
+.btn-sub{font-size:12px;color:var(--sub);margin-top:8px;text-align:center}
+
+/* ファーストビュー */
+#fv{background:linear-gradient(135deg,#eaf3ff 0%,#f0fbf4 100%);padding:60px 20px 50px}
+#fv .inner{max-width:860px;margin:0 auto}
+.fv-label{display:inline-block;background:var(--blue);color:#fff;font-size:12px;font-weight:700;padding:4px 14px;border-radius:4px;margin-bottom:16px;letter-spacing:.08em}
+.fv-h1{font-size:clamp(22px,5vw,36px);font-weight:900;color:var(--dark);line-height:1.5;margin-bottom:20px}
+.fv-h1 em{color:var(--blue);font-style:normal}
+.fv-worries{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;margin:24px 0;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.fv-worries p{font-weight:700;color:var(--sub);font-size:13px;margin-bottom:10px}
+.fv-worries ul{list-style:none;padding:0}
+.fv-worries ul li{padding:6px 0 6px 26px;border-bottom:1px dashed var(--border);font-size:15px;position:relative}
+.fv-worries ul li:last-child{border-bottom:none}
+.fv-worries ul li::before{content:"✕";position:absolute;left:0;color:#e74c3c;font-weight:700}
+
+/* 問題セクション */
+#problem{background:#fff}
+.data-box{background:var(--bg);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:20px 22px;margin:24px 0;font-size:15px;line-height:1.9}
+.data-box .num{font-size:32px;font-weight:900;color:var(--blue);display:inline}
+.data-box .unit{font-size:14px;color:var(--blue);font-weight:700}
+.highlight-box{background:#fffbea;border:1px solid #f0d060;border-radius:8px;padding:18px 20px;margin:20px 0;font-size:15px}
+
+/* 強み */
+#strengths{background:var(--bg)}
+.strength-list{display:grid;gap:16px;margin-top:8px}
+.strength-item{background:#fff;border-radius:10px;padding:20px 22px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;gap:16px;align-items:flex-start}
+.strength-icon{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.strength-item h3{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.strength-item p{font-size:14px;color:var(--sub)}
+
+/* 実績・声 */
+#voice{background:#fff}
+.voice-list{display:grid;gap:20px;margin-top:8px}
+.voice-card{border:1px solid var(--border);border-radius:10px;padding:22px 24px;position:relative}
+.voice-card::before{content:'"';font-size:60px;color:var(--blue);opacity:.12;position:absolute;top:6px;left:14px;font-family:Georgia,serif;line-height:1}
+.voice-name{font-size:13px;font-weight:700;color:var(--sub);margin-bottom:10px}
+.voice-name strong{color:var(--blue)}
+.voice-card p{font-size:15px;line-height:1.9;position:relative}
+.voice-result{display:inline-block;background:#e8f5e9;color:var(--green);font-size:13px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:10px}
+
+/* 料金 */
+#price{background:linear-gradient(135deg,#eaf3ff,#f0fbf4)}
+.price-card{background:#fff;border-radius:14px;box-shadow:0 4px 20px rgba(0,123,255,.12);overflow:hidden;max-width:560px;margin:0 auto}
+.price-head{background:var(--blue);color:#fff;text-align:center;padding:20px}
+.price-head h3{font-size:20px;font-weight:700}
+.price-head p{font-size:13px;opacity:.85;margin-top:4px}
+.price-body{padding:28px 28px 24px}
+.price-main{text-align:center;margin-bottom:20px}
+.price-main .yen{font-size:14px;color:var(--sub)}
+.price-main .amount{font-size:48px;font-weight:900;color:var(--blue)}
+.price-main .month{font-size:14px;color:var(--sub)}
+.price-main .tax{font-size:12px;color:var(--sub)}
+.discount-badge{background:#e8f5e9;border:2px solid var(--green);border-radius:8px;padding:14px 18px;margin-bottom:20px;text-align:center}
+.discount-badge .badge-title{font-size:13px;font-weight:700;color:var(--green)}
+.discount-badge .badge-num{font-size:26px;font-weight:900;color:var(--green)}
+.benefits{list-style:none}
+.benefits li{padding:7px 0 7px 24px;border-bottom:1px dashed var(--border);font-size:14px;position:relative}
+.benefits li:last-child{border-bottom:none}
+.benefits li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+
+/* フッターCTA */
+#cta{background:var(--dark);color:#fff;text-align:center;padding:60px 20px}
+#cta h2{font-size:clamp(20px,4vw,28px);font-weight:900;margin-bottom:14px}
+#cta p{font-size:15px;color:rgba(255,255,255,.75);margin-bottom:32px}
+#cta .btn{background:var(--green);font-size:18px;padding:18px 48px}
+.footer-note{margin-top:18px;font-size:12px;color:rgba(255,255,255,.45)}
+
+/* 細かい */
+footer{background:#111;color:rgba(255,255,255,.4);text-align:center;padding:16px;font-size:12px}
+
+/* レスポンシブ */
+@media(min-width:640px){
+  .strength-list{grid-template-columns:1fr 1fr}
+  .voice-list{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-inner">
+    <div class="logo">MEO<span>Pro</span>｜治療院専門 集客支援</div>
+    <div class="header-tel">無料相談はこちら<strong>📞 0120-XXX-XXX</strong></div>
+  </div>
+</header>
+
+<!-- ファーストビュー -->
+<section id="fv">
+  <div class="inner">
+    <!-- ヘッダー画像プレースホルダー -->
+    <div style="width:100%;max-width:860px;height:260px;background:linear-gradient(135deg,#dce8ff,#d4f0de);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 32px;border:2px dashed #007BFF;position:relative;overflow:hidden;">
+      <div style="font-size:48px;margin-bottom:8px;">🖼️</div>
+      <img src="./images/header.jpg" alt="笑顔の先生" style="width:100%; border-radius:10px; margin-bottom:20px;">
+      <div style="font-size:15px;font-weight:700;color:#ff0000;">ここにヘッダー画像が入ります</div>
+      <div style="font-size:12px;color:#666;margin-top:6px;">推奨サイズ：1200 × 520px（横長）</div>
+      <div style="position:absolute;bottom:10px;right:14px;font-size:11px;color:#aaa;">← 画像ファイルに差し替えてください →</div>
+    </div>
+
+    <span class="fv-label">治療院オーナー様へ</span>
+    <h1 class="fv-h1">治療院の新規患者が<br>なかなか増えない…<br><em>その原因は「Googleマップ」<br>にあるかもしれません。</em></h1>
+
+    <div class="fv-worries">
+      <p>こんなお悩み、ありませんか？</p>
+      <ul>
+        <li>チラシや広告にお金をかけても、効果がほとんど出ない</li>
+        <li>ホームページはあるのに、新規患者が来ない</li>
+        <li>Googleマップの順位が低く、近くの院に埋もれている</li>
+        <li>SNS発信をしているが、集客につながらない</li>
+        <li>リピートはしてもらえるが、新規が少なすぎる</li>
+      </ul>
+    </div>
+
+    <p style="font-size:16px;font-weight:500;margin-bottom:24px">
+      そのお悩み、<strong>Googleマップの上位表示（MEO対策）</strong>で<br>解決できます。まずは無料相談をご利用ください。
+    </p>
+
+    <div class="btn-wrap">
+      <a href="#cta" class="btn">▶ 無料相談・資料請求はこちら</a>
+      <p class="btn-sub">※ 勧誘・強引な営業は一切ありません</p>
+    </div>
+  </div>
+</section>
+
+<!-- 問題セクション -->
+<section id="problem" class="section">
+  <div class="section-inner">
+    <h2 class="section-title">なぜ今、MEO対策が<br>治療院に必要なのか？</h2>
+    <p class="lead">患者さんの「院選び」の行動は、ここ数年で大きく変わっています。</p>
+
+  <div class="data-box">
+    患者が院を探すとき、<span class="num">約7</span><span class="unit">割</span>が<strong>「Googleマップ」</strong>で検索しているというデータがあります。<br>
+    "整骨院 ◯◯市" "鍼灸院 近く" などのキーワードで上位に表示された院に、<br>問い合わせや予約が集中するのが現実です。
+  </div>
+
+<!-- Googleマップ3パックイメージ画像 -->
+<div style="text-align:center; margin:24px 0;">
+  <img src="./images/google-map-3pack-nagoya_4.png" 
+       alt="Googleマップで『整骨院 名古屋市』検索時の上位表示例" 
+       style="width:100%; max-width:420px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); border:1px solid #ddd;">
+  <p style="font-size:13px; color:var(--sub); margin-top:12px; font-weight:600;">
+    例：名古屋市内で「整骨院」を検索した際の上位3枠（3パック）。ここに表示されると問い合わせが集中します。
+  </p>
+</div>
+
+    <div class="highlight-box">
+      💡 <strong>Googleマップの上位3枠（いわゆる"3パック"）</strong>に表示されるだけで、<br>
+      クリック数・電話問い合わせ数が<strong>数倍になる</strong>と言われています。<br>
+      逆に言えば、<strong>上位に表示されていない院には、患者さんの目すら届いていない</strong>のです。
+    </div>
+
+    <p>高額なチラシ・広告を打っても結果が出ないのは、そもそも「患者さんが見ている場所」とずれているから。<br>MEO対策で正しい場所に露出することが、今の時代の集客の基本です。</p>
+  </div>
+</section>
+
+<!-- 解決策・強み -->
+<section id="strengths" class="section">
+  <div class="section-inner">
+    <h2 class="section-title center">当サービスが選ばれる<br>5つの理由</h2>
+
+    <div class="strength-list">
+      <div class="strength-item">
+        <div class="strength-icon">🏥</div>
+        <div>
+          <h3>治療院専門に特化</h3>
+          <p>整骨院・鍼灸院・整体院など治療院に特化した支援実績多数。業界特有の規制・表現ルールも熟知しています。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">📊</div>
+        <div>
+          <h3>データで見える効果</h3>
+          <p>毎月、Googleビジネスプロフィールの表示回数・電話タップ数・ルート検索数をレポートでご報告します。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">⚡</div>
+        <div>
+          <h3>最短2週間で着手</h3>
+          <p>ご契約後、最短2週間でMEO対策をスタート。スピーディーな初期設定で、早期の順位改善を目指します。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">💬</div>
+        <div>
+          <h3>クチコミ対策サポート</h3>
+          <p>Googleの評価を高めるクチコミ促進の仕組みづくりをサポート。信頼感のある院作りをお手伝いします。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">🔒</div>
+        <div>
+          <h3>契約縛りなし・透明な料金</h3>
+          <p>長期縛りなし。やめたいときはいつでも解約できます。隠れた費用も一切ありません。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 声 -->
+<section id="voice" class="section">
+  <div class="section-inner">
+    <h2 class="section-title center">ご利用いただいた先生の声</h2>
+
+    <div class="voice-list">
+      <div class="voice-card">
+        <p class="voice-name"><strong>山田 先生</strong>｜整骨院 院長（大阪府）</p>
+        <img src="./images/sensei/sensei_3.jpg" alt="山田先生 整骨院院長 笑顔のポートレート" style="width:110px; height:110px; border-radius:8px; float:left; margin:0 20px 16px 0; object-fit:cover; border:2px solid #e8f5e9; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+        <p>以前はチラシ代に毎月5万円以上かけていましたが、MEO対策に切り替えてから半年で月の新規患者数が2倍以上に。今では紹介患者さんも増えて、経営が安定してきました。</p>
+        <span class="voice-result">📈 新規患者 月12名 → 28名</span>
+      </div>
+      <div class="voice-card">
+        <p class="voice-name"><strong>佐藤 先生</strong>｜鍼灸院 院長（愛知県）</p>
+        <img src="./images/sensei/sensei_4.png" alt="佐藤先生 鍼灸院 院長 誠実そう" style="width:110px; height:110px; border-radius:8px; float:left; margin:0 20px 16px 0; object-fit:cover; border:2px solid #e8f5e9; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+        <p>Googleマップで近隣の院に埋もれていましたが、3ヶ月で地域の上位3枠に入ることができました。「Googleで見つけた」という患者さんが増え、本当に嬉しいです。</p>
+        <span class="voice-result">🗺️ Googleマップ 圏外 → 3位以内</span>
+      </div>
+      <div class="voice-card">
+        <p class="voice-name"><strong>田中 先生</strong>｜整体院 院長（福岡県）</p>
+        <img src="./images/sensei/sensei_5.png" alt="田中先生 整体院 院長 真面目そう" style="width:110px; height:110px; border-radius:8px; float:left; margin:0 20px 16px 0; object-fit:cover; border:2px solid #e8f5e9; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+        <p>毎月のレポートで数字の変化が見えるので、効果が実感しやすいです。担当の方も親切で、こちらの質問に丁寧に答えてくださるので安心して任せられています。</p>
+        <span class="voice-result">📞 電話問い合わせ 月3件 → 18件</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section id="price" class="section">
+  <div class="section-inner">
+    <h2 class="section-title center">料金・特典</h2>
+
+    <div class="price-card">
+      <div class="price-head">
+        <h3>治療院専門 MEOスタンダードプラン</h3>
+        <p>小規模院でも導入しやすいシンプルな料金体系</p>
+      </div>
+      <div class="price-body">
+        <div class="price-main">
+          <div class="yen">月額</div>
+          <span class="amount">29,800</span><span class="month">円</span>
+          <div class="tax">（税込 32,780円）</div>
+        </div>
+
+        <div class="discount-badge">
+          <div class="badge-title">🎁 初月限定 特別割引</div>
+          <div class="badge-num">50% OFF → 14,900円</div>
+          <div style="font-size:12px;color:#555;margin-top:4px">※ お申し込みから14日以内のご契約に限ります</div>
+        </div>
+
+        <ul class="benefits">
+          <li>Googleビジネスプロフィール 初期最適化設定（通常5万円相当）</li>
+          <li>毎月の投稿代行（月4回）</li>
+          <li>クチコミ促進ツール・テンプレート提供</li>
+          <li>月次効果レポート（数値で確認）</li>
+          <li>専任担当者によるチャットサポート</li>
+        </ul>
+
+        <div class="btn-wrap" style="margin-top:24px">
+          <a href="#cta" class="btn">今すぐ無料相談する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フッターCTA -->
+<section id="cta">
+  <h2>まずは無料相談から<br>始めてみませんか？</h2>
+  <p>現在の状況をお聞きした上で、貴院に合った改善提案をお伝えします。<br>相談だけでも大歓迎です。お気軽にどうぞ。</p>
+  <a href="mailto:info@example.com" class="btn">✉️ 無料相談・お問い合わせはこちら</a>
+  <p class="footer-note">営業時間：平日 10:00〜18:00｜返信は1営業日以内にご連絡します</p>
+</section>
+
+<footer>
+  <p>&copy; 2025 MEOPro 治療院専門集客支援. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
